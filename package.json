@@ -1,0 +1,12 @@
+{
+  "name": "zero-ai",
+  "version": "1.0.0",
+  "description": "ZERO AI Assistant Frontend",
+  "main": "dist/script.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

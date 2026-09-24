@@ -1,0 +1,349 @@
+:root {
+  --bg: #18181b;
+  --surface: #27272a;
+  --primary: #6366f1;
+  --accent: #8b5cf6;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #3f3f46;
+  --danger: #ef4444;
+}
+
+.light-mode {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --primary: #6366f1;
+  --text-main: #18181b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --danger: #dc2626;
+}
+
+* {  
+  font-family: "Poppins", sans-serif;  
+  box-sizing: border-box;
+}  
+
+body {  
+  display: flex;  
+  flex-direction: row;  
+  background-color: var(--bg);  
+  color: var(--text-main);  
+  margin: 0;  
+  min-height: 100vh;  
+}  
+
+.Menu-section {  
+  padding: 15px;  
+  width: 260px;  
+  flex-shrink: 0;  
+  display: flex;
+  flex-direction: column;
+}  
+
+.search-wrapper {  
+  display: flex;  
+  flex-direction: column;
+  align-items: center;  
+  margin-bottom: 15px;  
+}  
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;  
+}
+
+.mini-icons-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.mini-icons {  
+  background: transparent;  
+  border: none;  
+  color: var(--text-main);  
+  font-size: 20px;  
+  cursor: pointer;  
+  transition: 0.3s;
+}  
+
+.SearchInput {
+  background-color: transparent;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--text-main);
+  outline: none;
+  border: 1px solid var(--border);
+  margin-top: 10px;
+}
+
+.btns-wrapper {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 8px;  
+}  
+
+.Menu-btns {  
+  background: transparent;  
+  color: var(--text-main);  
+  border: none;  
+  text-align: left;  
+  border-radius: 7px;  
+  padding: 10px;  
+  transition: 0.3s;  
+  cursor: pointer;  
+}  
+
+.Menu-btns:hover {  
+  background-color: var(--surface);  
+}  
+
+.chats h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.chats-wrapper {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.recent-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Individual Chat Item with Hover Actions */
+.Recentmsg-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.Recentmsg-item:hover, 
+.Recentmsg-item.active {
+  background-color: var(--surface);
+}
+
+.chat-title-text {
+  color: var(--text-main);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.chat-item-actions {
+  display: none;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.Recentmsg-item:hover .chat-item-actions {
+  display: flex;
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.action-btn:hover {
+  color: var(--text-main);
+  background-color: var(--border);
+}
+
+.action-btn.delete:hover {
+  color: var(--danger);
+}
+
+.no-recents {
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 8px 10px;
+}
+
+.vr {  
+  border-left: 1px solid var(--border);  
+}  
+
+.Main-section {  
+  flex: 1;  
+  display: flex;  
+  flex-direction: column;  
+  height: 100vh;  
+  padding: 15px;  
+  box-sizing: border-box;  
+}  
+
+.Header-wrapper {  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+  width: 100%;  
+}  
+
+.Header-wrapper h2 span {
+  color: var(--primary);
+}
+
+.Header-wrapper a {  
+  text-decoration: none;  
+  color: var(--text-main);  
+}  
+
+#zero-dropdown {  
+  background-color: var(--bg);  
+  color: var(--text-main);  
+  border: 1px solid var(--border);  
+  padding: 5px 10px;  
+  appearance: none;
+  border-radius: 5px;  
+}  
+
+#Title-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px 0;
+  scrollbar-width: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+} 
+
+#Que {  
+  text-align: center;  
+  margin-top: auto;  
+  margin-bottom: auto;  
+}  
+
+.Input-wrapper {  
+  width: 100%;  
+  display: flex;  
+  align-items: center;  
+  gap: 10px;  
+  margin-top: 10px;  
+  align-self: flex-end;
+}  
+
+#input {  
+  background-color: var(--surface);  
+  width: 100%;  
+  border: 1px solid var(--border);  
+  border-radius: 10px;  
+  padding: 10px;
+  outline: none;  
+  color: var(--text-main);  
+  resize: none;
+  max-height: 150px;
+  min-height: 42px;
+  height: 42px;
+}  
+
+#Send {  
+  border-radius: 8px;  
+  height: 42px;  
+  padding: 0 15px;  
+  background-color: var(--primary);  
+  border: 1px solid var(--primary);  
+  color: var(--text-main);  
+  cursor: pointer;  
+  transition: 0.3s;
+  flex-shrink: 0;
+}  
+
+#add {  
+  border-radius: 10px;  
+  width: 40px;  
+  height: 42px;
+  padding: 5px;
+  background-color: var(--surface);  
+  border: 1px solid var(--border);  
+  font-size: 20px;  
+  color: var(--text-main);  
+  cursor: pointer;  
+  flex-shrink: 0;  
+}  
+
+.note {  
+  text-align: center;  
+  font-size: 12px;  
+  color: var(--text-muted);  
+  margin-top: 5px;
+}  
+
+.Msgwrapper {  
+  background-color: var(--primary);  
+  color: var(--text-main);  
+  border-radius: 10px;  
+  padding: 10px 15px;  
+  max-width: 75%;  
+  align-self: flex-end;  
+  white-space: pre-wrap;
+  word-break: break-word;
+}  
+
+.Replywrapper {  
+  background-color: var(--surface);  
+  border-left: 2px solid var(--primary);
+  color: var(--text-main);  
+  border-radius: 10px;  
+  padding: 10px 15px;  
+  max-width: 75%;  
+  align-self: flex-start;  
+  white-space: pre-wrap;
+  word-break: break-word;
+}  
+
+.Thinking {
+  font-size: 16px;
+  display: inline-block;
+  animation: thinking 1.2s infinite;
+}
+
+@keyframes thinking {
+  0%, 20% { opacity: 0.2; }
+  50% { opacity: 1; }
+  80%, 100% { opacity: 0.2; }
+}
+
+@media (max-width: 700px) {  
+  body {  
+    flex-direction: column;  
+  }  
+
+  .Menu-section {  
+    display: none;
+    width: 100%;  
+    padding: 10px;  
+  }  
+
+  .vr {  
+    display: none;  
+  }  
+
+  .Main-section {  
+    height: 100vh;
+  }  
+}

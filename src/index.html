@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero AI - Your Personal AI Assistant</title>  
+  <link rel="shortcut icon" href="/fav.jpg" type="image/jpg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body> 
+  <section class="Menu-section">
+    <div class="search-wrapper" id="searchwrapper">
+      <div class="nav">
+        <h2>ZERO</h2>
+        <div class="mini-icons-wrapper">
+         <button type="button" class="mini-icons" id="lightmode" aria-label="Toggle Theme">&#9728;</button>
+         <button type="button" class="mini-icons" id="search" aria-label="Search Chats">&#8981;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btns-wrapper">
+      <button type="button" class="Menu-btns" id="newChat">New Chat</button>
+      <button type="button" class="Menu-btns">Images</button>
+      <button type="button" class="Menu-btns">Library</button>
+      <button type="button" class="Menu-btns">Projects</button>
+    </div>
+
+    <div class="chats">
+      <h3>Recents</h3>
+    </div>
+
+    <div class="chats-wrapper">
+      <ul class="recent-list" id="recent-list">
+      </ul>
+    </div>
+  </section>
+
+  <div class="vr"></div>
+
+  <section class="Main-section">
+    <div class="Header-wrapper">
+      <h2><span>Z</span>ERO</h2>
+
+      <select id="zero-dropdown">
+        <option value="free">Zero Free</option>
+        <option value="pro">Zero Pro</option>
+      </select>
+
+      <a href="#">Free Offer</a>
+    </div>
+
+    <div id="Title-wrapper">
+      <h1 id="Que"></h1>
+    </div>
+
+    <div class="Input-wrapper">
+      <button type="button" id="add">+</button>
+      <textarea placeholder="Ask Zero Anything" id="input"></textarea>
+      <button type="button" id="Send">Send</button>
+    </div>
+
+    <div class="note">
+      <p>Zero can make mistakes. Check important info.</p>
+    </div>
+  </section>
+
+  <script type="module" src="../dist/script.js"></script>
+</body>
+</html>
