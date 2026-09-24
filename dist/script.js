@@ -18,6 +18,23 @@ const searchBtn = document.getElementById("search");
 const searchWrapper = document.getElementById("searchwrapper");
 const themeBtn = document.getElementById("lightmode");
 const newChatBtn = document.getElementById("newChat");
+const menuToggleBtn = document.getElementById("menuToggle");
+const closeMenuBtn = document.getElementById("closeMenu");
+const menuSection = document.getElementById("menuSection");
+const menuOverlay = document.getElementById("menuOverlay");
+const menuButtons = document.querySelectorAll(".Menu-btns");
+function openMenu() {
+    if (menuSection && menuOverlay) {
+        menuSection.classList.add("open");
+        menuOverlay.classList.add("open");
+    }
+}
+function closeMenu() {
+    if (menuSection && menuOverlay) {
+        menuSection.classList.remove("open");
+        menuOverlay.classList.remove("open");
+    }
+}
 function setRandomGreeting() {
     const randomgreet = texts[Math.floor(Math.random() * texts.length)] || "What Are We Doing Today?";
     greetingText.textContent = randomgreet;
@@ -64,12 +81,12 @@ function renderRecents(filterText = "") {
         titleSpan.className = "chat-title-text";
         titleSpan.textContent = chat.title;
         titleSpan.onclick = () => loadChatIntoUI(chat.id);
-        // Actions Wrapper (Rename & Delete)
         const actionsDiv = document.createElement("div");
         actionsDiv.className = "chat-item-actions";
+        actionsDiv.style.display = "flex";
         const editBtn = document.createElement("button");
         editBtn.className = "action-btn edit";
-        editBtn.innerHTML = "✏️";
+        editBtn.textContent = "✏️";
         editBtn.title = "Rename Chat";
         editBtn.onclick = (e) => {
             e.stopPropagation();
@@ -77,7 +94,7 @@ function renderRecents(filterText = "") {
         };
         const deleteBtn = document.createElement("button");
         deleteBtn.className = "action-btn delete";
-        deleteBtn.innerHTML = "🗑️";
+        deleteBtn.textContent = "🗑️";
         deleteBtn.title = "Delete Chat";
         deleteBtn.onclick = (e) => {
             e.stopPropagation();
@@ -128,6 +145,9 @@ function loadChatIntoUI(id) {
         }
     });
     renderRecents(searchInput ? searchInput.value : "");
+    if (window.innerWidth <= 700) {
+        closeMenu();
+    }
 }
 function appendUserMessage(text) {
     greetingText.style.display = "none";
@@ -155,6 +175,9 @@ function resetToNewChat() {
     inputElem.value = "";
     adjustTextareaHeight();
     renderRecents(searchInput ? searchInput.value : "");
+    if (window.innerWidth <= 700) {
+        closeMenu();
+    }
 }
 function adjustTextareaHeight() {
     inputElem.style.height = "42px";
@@ -296,6 +319,19 @@ function handleSendMessage() {
         titleWrapper.scrollTop = titleWrapper.scrollHeight;
     }, 1200);
 }
+if (menuToggleBtn)
+    menuToggleBtn.onclick = () => openMenu();
+if (closeMenuBtn)
+    closeMenuBtn.onclick = () => closeMenu();
+if (menuOverlay)
+    menuOverlay.onclick = () => closeMenu();
+menuButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        if (window.innerWidth <= 700) {
+            closeMenu();
+        }
+    });
+});
 sendBtn.onclick = () => handleSendMessage();
 inputElem.addEventListener("input", adjustTextareaHeight);
 inputElem.addEventListener("keydown", (e) => {
@@ -324,6 +360,9 @@ searchBtn.onclick = () => {
 };
 themeBtn.onclick = () => {
     document.body.classList.toggle("light-mode");
+    if (window.innerWidth <= 700) {
+        closeMenu();
+    }
 };
 newChatBtn.onclick = () => resetToNewChat();
 loadChats();

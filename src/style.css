@@ -30,7 +30,9 @@ body {
   background-color: var(--bg);  
   color: var(--text-main);  
   margin: 0;  
-  min-height: 100vh;  
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }  
 
 .Menu-section {  
@@ -39,6 +41,8 @@ body {
   flex-shrink: 0;  
   display: flex;
   flex-direction: column;
+  background-color: var(--bg);
+  z-index: 100;
 }  
 
 .search-wrapper {  
@@ -53,11 +57,13 @@ body {
   flex-direction: row;
   width: 100%;
   justify-content: space-between;  
+  align-items: center;
 }
 
 .mini-icons-wrapper {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .mini-icons {  
@@ -68,6 +74,11 @@ body {
   cursor: pointer;  
   transition: 0.3s;
 }  
+
+.close-btn {
+  display: none;
+  font-size: 24px;
+}
 
 .SearchInput {
   background-color: transparent;
@@ -122,7 +133,6 @@ body {
   gap: 4px;
 }
 
-/* Individual Chat Item with Hover Actions */
 .Recentmsg-item {
   display: flex;
   align-items: center;
@@ -203,7 +213,17 @@ body {
   width: 100%;  
 }  
 
-.z{
+.mobile-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#menuToggle {
+  display: none;
+}
+
+.z {
   color: var(--primary);
 }
 
@@ -285,12 +305,14 @@ body {
   cursor: pointer;  
   flex-shrink: 0;  
 }  
-.h{
+
+.h {
   font-size: 20px;
   margin: 0;
   color: var(--text-main);
   text-decoration: none;
 }
+
 .note {  
   text-align: center;  
   font-size: 12px;  
@@ -333,22 +355,56 @@ body {
   80%, 100% { opacity: 0.2; }
 }
 
-@media (max-width: 700px) {  
-  body {  
-    flex-direction: column;  
-  }  
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
 
-  .Menu-section {  
-    display: none;
-    width: 100%;  
-    padding: 10px;  
-  }  
+.menu-overlay.open {
+  display: block;
+}
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 700px) {  
+  #menuToggle {
+    display: inline-block;
+  }
+
+  .close-btn {
+    display: inline-block;
+  }
 
   .vr {  
     display: none;  
   }  
 
+  .Menu-section {  
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  }  
+
+  .Menu-section.open {
+    transform: translateX(0);
+  }
+
   .Main-section {  
+    width: 100%;
     height: 100vh;
   }  
+
+  .offer-link {
+    font-size: 13px;
+  }
 }

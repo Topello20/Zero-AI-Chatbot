@@ -30,6 +30,25 @@ const searchBtn = document.getElementById("search") as HTMLButtonElement;
 const searchWrapper = document.getElementById("searchwrapper") as HTMLElement;
 const themeBtn = document.getElementById("lightmode") as HTMLButtonElement;
 const newChatBtn = document.getElementById("newChat") as HTMLButtonElement;
+const menuToggleBtn = document.getElementById("menuToggle") as HTMLButtonElement;
+const closeMenuBtn = document.getElementById("closeMenu") as HTMLButtonElement;
+const menuSection = document.getElementById("menuSection") as HTMLElement;
+const menuOverlay = document.getElementById("menuOverlay") as HTMLElement;
+const menuButtons = document.querySelectorAll(".Menu-btns");
+
+function openMenu(): void {
+  if (menuSection && menuOverlay) {
+    menuSection.classList.add("open");
+    menuOverlay.classList.add("open");
+  }
+}
+
+function closeMenu(): void {
+  if (menuSection && menuOverlay) {
+    menuSection.classList.remove("open");
+    menuOverlay.classList.remove("open");
+  }
+}
 
 function setRandomGreeting(): void {
   const randomgreet = texts[Math.floor(Math.random() * texts.length)] || "What Are We Doing Today?";
@@ -83,13 +102,13 @@ function renderRecents(filterText: string = ""): void {
     titleSpan.textContent = chat.title;
     titleSpan.onclick = () => loadChatIntoUI(chat.id);
 
-    // Actions Wrapper (Rename & Delete)
     const actionsDiv = document.createElement("div");
     actionsDiv.className = "chat-item-actions";
+    actionsDiv.style.display = "flex";
 
     const editBtn = document.createElement("button");
     editBtn.className = "action-btn edit";
-    editBtn.innerHTML = "✏️";
+    editBtn.textContent = "✏️";
     editBtn.title = "Rename Chat";
     editBtn.onclick = (e) => {
       e.stopPropagation();
@@ -98,7 +117,7 @@ function renderRecents(filterText: string = ""): void {
 
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "action-btn delete";
-    deleteBtn.innerHTML = "🗑️";
+    deleteBtn.textContent = "🗑️";
     deleteBtn.title = "Delete Chat";
     deleteBtn.onclick = (e) => {
       e.stopPropagation();
@@ -155,6 +174,10 @@ function loadChatIntoUI(id: string): void {
   });
 
   renderRecents(searchInput ? searchInput.value : "");
+
+  if (window.innerWidth <= 700) {
+    closeMenu();
+  }
 }
 
 function appendUserMessage(text: string): void {
@@ -185,6 +208,10 @@ function resetToNewChat(): void {
   inputElem.value = "";
   adjustTextareaHeight();
   renderRecents(searchInput ? searchInput.value : "");
+
+  if (window.innerWidth <= 700) {
+    closeMenu();
+  }
 }
 
 function adjustTextareaHeight(): void {
@@ -344,6 +371,18 @@ function handleSendMessage(): void {
   }, 1200);
 }
 
+if (menuToggleBtn) menuToggleBtn.onclick = () => openMenu();
+if (closeMenuBtn) closeMenuBtn.onclick = () => closeMenu();
+if (menuOverlay) menuOverlay.onclick = () => closeMenu();
+
+menuButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    if (window.innerWidth <= 700) {
+      closeMenu();
+    }
+  });
+});
+
 sendBtn.onclick = () => handleSendMessage();
 
 inputElem.addEventListener("input", adjustTextareaHeight);
@@ -376,6 +415,9 @@ searchBtn.onclick = () => {
 
 themeBtn.onclick = () => {
   document.body.classList.toggle("light-mode");
+  if (window.innerWidth <= 700) {
+    closeMenu();
+  }
 };
 
 newChatBtn.onclick = () => resetToNewChat();

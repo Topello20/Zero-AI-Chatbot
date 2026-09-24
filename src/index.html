@@ -8,16 +8,20 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body> 
-  <section class="Menu-section">
+  <!-- Overlay Backdrop for Mobile Menu -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <section class="Menu-section" id="menuSection">
     <div class="search-wrapper" id="searchwrapper">
       <div class="nav">
         <h2><a href="https://zero-ai-chatbot-six.vercel.app/" class="h" target="_blank"><span class="z">Z</span>ERO</a></h2>
         <div class="mini-icons-wrapper">
          <button type="button" class="mini-icons" id="lightmode" aria-label="Toggle Theme">&#9728;</button>
          <button type="button" class="mini-icons" id="search" aria-label="Search Chats">&#8981;</button>
+         <button type="button" class="mini-icons close-btn" id="closeMenu" aria-label="Close Menu">&times;</button>
         </div>
       </div>
     </div>
@@ -34,8 +38,7 @@
     </div>
 
     <div class="chats-wrapper">
-      <ul class="recent-list" id="recent-list">
-      </ul>
+      <ul class="recent-list" id="recent-list"></ul>
     </div>
   </section>
 
@@ -43,14 +46,17 @@
 
   <section class="Main-section">
     <div class="Header-wrapper">
-      <h2><a href="https://zero-ai-chatbot-six.vercel.app/" class="h" target="_blank"><span class="z">Z</span>ERO</a></h2>
+      <div class="mobile-logo-group">
+        <button type="button" class="mini-icons" id="menuToggle" aria-label="Toggle Menu">☰</button>
+        <h2><a href="https://zero-ai-chatbot-six.vercel.app/" class="h" target="_blank"><span class="z">Z</span>ERO</a></h2>
+      </div>
 
       <select id="zero-dropdown">
         <option value="free">Zero Free</option>
         <option value="pro">Zero Pro</option>
       </select>
 
-      <a href="#">Free Offer</a>
+      <a href="#" class="offer-link">Free Offer</a>
     </div>
 
     <div id="Title-wrapper">
