@@ -4,7 +4,7 @@
   "description": "ZERO AI Assistant Frontend",
   "main": "dist/script.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && node build.js"
   },
   "devDependencies": {
     "typescript": "^5.0.0"
